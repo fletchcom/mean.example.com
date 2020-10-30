@@ -11,6 +11,7 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var Users = require('./models/users');
 var indexRouter = require('./routes/index');
+var authRouter = require('./routes/auth');
 var usersRouter = require('./routes/users');
 var apiUsersRouter = require('./routes/api/users');
 
@@ -69,6 +70,7 @@ passport.deserializeUser(function(user, done){
   done(null, user);
 });
 app.use('/', indexRouter);
+app.use('/auth', authRouter);
 app.use('/users', usersRouter);
 app.use('/api/users', apiUsersRouter);
 app.use('/api/auth', apiAuthRouter);
