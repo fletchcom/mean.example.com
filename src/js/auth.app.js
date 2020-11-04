@@ -108,16 +108,41 @@ var authApp = (function() {
     });
   }
 
-  return {
-    load: function(){
+   return {
+     load: function(){
       registrationForm();
-      postRequest('registrationForm', '/api/auth/register');
+       postRequest('registrationForm', '/api/auth/register');
+       validate.registrationForm();
+     }
+   }
+})();
+
+var validate = (function() {
+
+  function confirmPasswordMatch() {
+    validate.registrationForm();
+
+    let pw = document.getElementById('password');
+    let cpw = document.getElementById('confirm_password');
+
+    if(pw.value !== cpw.value){
+      cpw.setCustomValidity("Passwords do not match");
+    } else {
+      cpw.setCustomValidity("");
+    }
+
+  }
+
+  return {
+    registrationForm: function(){
+      document.querySelector('#registrationForm input[type="submit"]').addEventListener(
+        'click',
+        function(){
+        confirmPasswordMatch();
+      });
     }
   }
+
 })();
 
 authApp.load();
-
-window.addEventListener("hashchange", function(){
-  authApp.load();
-});
