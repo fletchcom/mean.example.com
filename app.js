@@ -75,6 +75,12 @@ app.use(function(req,res,next){
   next();
 });
 
+app.use('/', indexRouter);
+app.use('/auth', authRouter);
+app.use('/users', usersRouter);
+app.use('/api/auth', apiAuthRouter);
+app.use('/api/users', apiUsersRouter);
+
 //Session based access control
 app.use(function(req,res,next){
   //Uncomment the following line to allow access to everything.
@@ -121,12 +127,6 @@ app.use(function(req,res,next){
   //redirect the user to the login screen.
   return res.redirect('/auth#login');
 });
-
-app.use('/', indexRouter);
-app.use('/auth', authRouter);
-app.use('/users', usersRouter);
-app.use('/api/auth', apiAuthRouter);
-app.use('/api/users', apiUsersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
