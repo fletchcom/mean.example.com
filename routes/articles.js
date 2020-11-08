@@ -3,11 +3,11 @@ var router = express.Router();
 var Articles = require('../models/articles');
 
 router.get('/', function(req, res, next) {
-  res.render('articles/index', { title: 'xxx' });
+  res.render('articles/index', { title: 'Articles Management' });
 });
 
 router.get('/:slug', function(req, res, next) {
-  res.render('articles/view', { title: 'xxx' });
+  res.render('articles/view', { title: 'View Articles' });
 });
 
 router.get('/app', function(req, res, next) {
