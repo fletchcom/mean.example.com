@@ -22,4 +22,21 @@ router.get('/:articleId', function(req,res){
    });
  });
 
+ router.post('/', function(req, res) {
+  Articles.create(new Articles({
+    title: req.body.title,
+    description: req.body.description,
+    keywords: req.body.keywords,
+    body: req.body.body
+  }), function(err, article){
+    
+    if(err){
+      return res.json({success: false, article: req.body, error: err});
+    }
+
+    return res.json({success: true, article: article});
+    
+  });
+}); 
+
 module.exports = router;
