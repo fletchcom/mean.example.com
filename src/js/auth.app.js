@@ -126,14 +126,13 @@ var authApp = (function() {
   
     }
   }
-
-   return {
-     load: function(){
-      registrationForm();
-       postRequest('registrationForm', '/api/auth/register');
-       validate.registrationForm();
-     }
-   }
+  return {
+    load: function(){
+     registrationForm();
+      postRequest('registrationForm', '/api/auth/register');
+      validate.registrationForm();
+    }
+  }
 })();
 
 var validate = (function() {
