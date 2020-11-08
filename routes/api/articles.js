@@ -39,4 +39,46 @@ router.get('/:articleId', function(req,res){
   });
 }); 
 
+router.put('/', function(req, res){
+
+  Articles.findOne({'_id': req.body._id}, function(err, article){
+
+   if(err) {
+     return res.json({success: false, error: err});
+   }
+
+   if(article) {
+
+    let data = req.body;
+
+    if(data.title){
+      article.title = data.title;
+    };
+
+    if(data.description){
+    article.description = data.description;
+    };
+
+    if(data.keywords){
+    article.keywords = data.keywords;
+    };
+
+    if(data.body){
+    articles.body = data.body;
+    };
+
+    article.save(function(err){
+      if(err){
+        return res.json({success: false, error: err});
+      }else{
+        return res.json({success: true, article:article});
+      }
+    });
+
+   }
+
+  });
+  
+});
+
 module.exports = router;
