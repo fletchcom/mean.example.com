@@ -71,7 +71,7 @@ router.put('/', function(req, res){
       if(err){
         return res.json({success: false, error: err});
       }else{
-        return res.json({success: true, article:article});
+        return res.json({success: true, article: article});
       }
     });
 
@@ -79,6 +79,22 @@ router.put('/', function(req, res){
 
   });
   
+});
+
+router.delete('/:articleId', function(req,res){
+
+  var articleId = req.params.articleId;
+
+  Articles.remove({'_id':articleId}, function(err,removed){
+
+    if(err){
+      return res.json({success: false, error: err});
+    }
+
+    return res.json({success: true, status: removed});
+
+  });
+
 });
 
 module.exports = router;
