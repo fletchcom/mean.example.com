@@ -96,4 +96,10 @@ router.get('/:userId', function(req,res){
   
   });
 
+  Users.pre('save', function(next){
+    this.modified = new Date().toISOString();
+    next();
+  });
+  
+
 module.exports = router;
