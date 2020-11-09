@@ -14,6 +14,7 @@ var Users = require('./models/users');
 var authRouter = require('./routes/auth');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var articlesRouter = require('./routes/articles');
 var apiAuthRouter = require('./routes/api/auth');
 var apiUsersRouter = require('./routes/api/users');
 var apiArticlesRouter = require('./routes/api/articles');
@@ -126,6 +127,7 @@ app.use(function(req,res,next){
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
+app.use('/articles', articlesRouter);
 app.use('/api/auth', apiAuthRouter);
 app.use('/api/users', apiUsersRouter);
 app.use('/api/articles', apiArticlesRouter);
