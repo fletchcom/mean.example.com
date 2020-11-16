@@ -87,7 +87,8 @@ app.use(function(req,res,next){
   //exact matches.
   var whitelist = [
     '/',
-    '/auth'
+    '/auth',
+    '/articles'
   ];
 
   //req.url holds the current URL
@@ -102,7 +103,8 @@ app.use(function(req,res,next){
   //Allow access to dynamic end points
   var subs = [
     '/public/',
-    '/api/auth/'
+    '/api/auth/',
+    '/api/articles/'
   ];
 
   //The query string provides a partial URL match beginning
