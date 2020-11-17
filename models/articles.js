@@ -24,7 +24,8 @@ var Articles = new Schema({
     default: Date.now
   },
   modified: {
-    type: Date
+    type: Date,
+    default: Date.now
   }
 });
 
